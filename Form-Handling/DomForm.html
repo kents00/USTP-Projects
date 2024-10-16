@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edoloverio</title>
+</head>
+
+<body>
+    <form action="" id="myForm1">
+        <input type="text" id="n1">
+        <input type="text" id="n2">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h1 id="display"></h1>
+    <script>
+        document.getElementById('myForm1').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let number1 = document.getElementById('n1').value;
+            let number2 = document.getElementById('n2').value;
+            var result = parseInt(number1) / parseInt(number2);
+            document.getElementById('display').innerHTML = result;
+        });
+
+
+        let input1 = prompt("Enter a the first number:");
+        let input2 = prompt("Enter a the second number:");
+        var sum = parseInt(input1) + parseInt(input2);
+        alert("The sum of two numbers is:" + sum);
+    </script>
+</body>
+
+</html>
