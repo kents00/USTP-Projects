@@ -64,6 +64,7 @@ Make sure you have the following installed:
 
 - **PHP 3.x.x** (Operating inside of the machine)
 - **PHP Server** (Vscode Plugin)
+- **XAMPP 8.2.12** ([Download Here](https://sourceforge.net/projects/xampp/files/))
 
 ### Installation
 
