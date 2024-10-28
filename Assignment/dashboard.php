@@ -1,10 +1,9 @@
 <?php
 require 'db.php';
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
+if (!isset($_COOKIE['user_id'])) {
+    echo "<script>window.location.href='login.php';</script>";
+    exit;
 }
 
 // Add a new student
@@ -157,7 +156,6 @@ $students = $pdo->query("SELECT * FROM students")->fetchAll();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-    // Fill the modal with the student's current information
     var editModal = document.getElementById('editModal');
     editModal.addEventListener('show.bs.modal', function(event) {
         var button = event.relatedTarget;

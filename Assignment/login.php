@@ -1,8 +1,7 @@
 <?php
 require 'db.php';
-session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -11,8 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch();
 
     if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: dashboard.php');
+
+        setcookie('user_id', hash('sha256', $user['id']), time() + 86400, '/');
+        echo "<script>window.location.href='dashboard.php';</script>";
     } else {
         echo 'Invalid credentials!';
     }
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <h2 class="mt-5">Login</h2>
         <form method="post" action="login.php">
+            <input type="hidden" name="submit" value="1">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
